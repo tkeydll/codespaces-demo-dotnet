@@ -39,8 +39,15 @@ else
 @code {
     private WeatherForecast[]? forecasts;
 
+    private Repository repos = new Repository();
+    private string query = "SELECT * FROM Customers";
+
     protected override async Task OnInitializedAsync()
     {
+        // Query
+        await repos.RunQuery(query);
+
+
         // Simulate asynchronous loading to demonstrate streaming rendering
         await Task.Delay(500);
 
