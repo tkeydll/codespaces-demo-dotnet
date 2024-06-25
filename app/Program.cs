@@ -25,3 +25,7 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+var repos = new Repository();
+var query = "SELECT * FROM Customers WHERE CustomerID = 'aaa'";
+repos.RunQuery(query);
