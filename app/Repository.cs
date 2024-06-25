@@ -2,12 +2,12 @@ using System.Data.SqlClient;
 
 public class Repository
 {
-  public async Task RunQuery(string query)
+  public async Task RunQuery(string name)
   {
       SqlConnection connection = new SqlConnection("Data Source=(local);Initial Catalog=Northwind;Integrated Security=true");
       connection.Open();
 
-      // This line is vulnerable to SQL Injection attacks.
+      var query = $"select * from customers where customer_name = '{name}'";
       SqlCommand command = new SqlCommand(query, connection);
       await command.ExecuteNonQueryAsync();
 
